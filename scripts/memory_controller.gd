@@ -18,12 +18,26 @@ func toggle_memory_world():
 	print("Toggling memory world!")
 	in_memory = true
 	visual_filter.enter_memory_filter()
+	_toggle_hazards(false)
 	memory_timer.start(memory_duration)
 
+func _toggle_hazards(active: bool):
+	var hazards = get_tree().get_nodes_in_group("hazard")
+	for hazard in hazards:
+		if hazard.has_method("set_active"):
+			print("Setting active:", hazard.name)
+			hazard.set_active(active)
+		else:
+			# Fallback in case some hazards don’t have that method yet
+			if hazard.has_method("set_visible"):
+				hazard.visible = active
+			if hazard.has_node("HitBox"):
+				hazard.get_node("HitBox").monitoring = active
 
 func _on_memory_timeout():
 	_exit_memory_world()
 
 func _exit_memory_world():
 	visual_filter.exit_memory_filter()
+	_toggle_hazards(true)
 	in_memory = false
