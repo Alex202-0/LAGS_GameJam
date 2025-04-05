@@ -8,7 +8,9 @@ extends "res://scripts/enemy_base.gd"
 @onready var player := get_node("/root/Area1/Player") # Update path if needed
 @onready var detection_area := $DetectionArea
 @onready var hitbox := $HitBox
+
 @onready var sprite := $AnimatedSprite2D # Animated sprite node
+
 
 enum State { WANDER, CHASE, HIT }
 var state: State = State.WANDER
@@ -16,6 +18,7 @@ var direction := -1
 
 func _ready():
 	super() # Call parent _ready() first
+
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	detection_area.body_entered.connect(_on_player_detected)
 	detection_area.body_exited.connect(_on_player_lost)
@@ -32,6 +35,7 @@ func _physics_process(delta):
 			velocity.x = 0
 			_play_anim("default")
 
+
 	move_and_slide()
 
 func _do_wander(delta):
@@ -40,6 +44,7 @@ func _do_wander(delta):
 		direction *= -1
 	_update_sprite_direction()
 	_play_anim("default")
+
 
 func _do_chase(delta):
 	if not player:
@@ -51,6 +56,7 @@ func _do_chase(delta):
 	velocity.x = move_toward(velocity.x, direction * chase_speed, acceleration * delta)
 	_update_sprite_direction()
 	_play_anim("default")
+
 
 func _on_hitbox_body_entered(body):
 	if body.name == "Player":
@@ -72,3 +78,4 @@ func _update_sprite_direction():
 func _play_anim(anim_name: String):
 	if sprite.animation != anim_name or !sprite.is_playing():
 		sprite.play(anim_name)
+
