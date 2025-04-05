@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh7nelgi6op8a"]
+
+[ext_resource type="Script" uid="uid://wd2rv1pa1lek" path="res://scripts/ground_enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://by63ncgekcpbe" path="res://assets/Icon25.png" id="2_md0e3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
+radius = 74.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
+radius = 7.0
+
+[node name="Ground Enemy" type="CharacterBody2D"]
+script = ExtResource("1_7p1mj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_md0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4ra3w")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_5uy6h")
+debug_color = Color(0.995489, 0, 0.204339, 0.42)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_md0e3")
