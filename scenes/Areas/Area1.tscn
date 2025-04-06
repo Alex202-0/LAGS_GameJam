@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://0k4pa60xprx6"]
+[gd_scene load_steps=17 format=3 uid="uid://0k4pa60xprx6"]
 
 [ext_resource type="Script" uid="uid://cmk3gexfioso1" path="res://scripts/area_1.gd" id="1_a64mu"]
 [ext_resource type="Texture2D" uid="uid://by2pa7e3kqa51" path="res://assets/Dungeon Tile Set.png" id="1_eg5as"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cro20ice80e06" path="res://scripts/visual_filter.gd" id="4_nnl1e"]
 [ext_resource type="Shader" uid="uid://dqr2bo20fumby" path="res://scenes/Areas/overlay_memory_shader.gdshader" id="4_pb4ok"]
 [ext_resource type="PackedScene" uid="uid://t2h856l3witk" path="res://scenes/transition.tscn" id="8_gumpc"]
+[ext_resource type="PackedScene" uid="uid://bictqc5kjrm5f" path="res://scenes/npc.tscn" id="9_w70qt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04kkk"]
 texture = ExtResource("1_eg5as")
@@ -349,3 +350,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NPC" parent="." instance=ExtResource("9_w70qt")]
+position = Vector2(104, -16)

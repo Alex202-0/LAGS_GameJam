@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var anim := $AnimationPlayer
 
 signal finished_blink
+signal finished_instructions
+
+func start_instructions():
+	anim.play("instructions")
 
 func start_blink():
 	blackTop.visible = true
@@ -29,3 +33,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		blackTop.visible = false
 		blackBottom.visible = false
 		queue_free()
+	elif anim_name == "instructions":
+		print("Emitting finished_instructions")
+		emit_signal("finished_instructions")

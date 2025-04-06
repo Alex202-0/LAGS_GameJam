@@ -1,34 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://t2h856l3witk"]
+[gd_scene load_steps=7 format=3 uid="uid://t2h856l3witk"]
 
 [ext_resource type="Script" uid="uid://dfq5omjiv7dxn" path="res://scripts/transition.gd" id="1_rerct"]
-
-[sub_resource type="Animation" id="Animation_kg4ax"]
-resource_name = "blink"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackScreenTop:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -666), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlackScreenBottom:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 666), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_rerct"]
 length = 0.001
@@ -79,6 +51,58 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Esta bien, yo creo que lo puedo lograr."]
+}
+
+[sub_resource type="Animation" id="Animation_kg4ax"]
+resource_name = "blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreenTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -666), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackScreenBottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 666), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_f0i4t"]
@@ -133,11 +157,40 @@ tracks/3/keys = {
 "values": [Vector2(0, 666)]
 }
 
+[sub_resource type="Animation" id="Animation_px735"]
+resource_name = "instructions"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 6.98, 9, 11, 13, 15, 17, 20, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 6.98, 9, 11, 13, 15, 17, 20, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Esta bien, yo creo que lo puedo lograr.", "Esta bien, yo creo que lo puedo lograr.", "Cierra los ojos, escapa del mundo. Siempre ha sido asi.", "Cierra los ojos, escapa del mundo. Siempre ha sido asi.", "Cierra los ojos, escapa del mundo. Siempre ha sido asi.", "Cierra los ojos, escapa del mundo. Siempre ha sido asi.", "Te extraño mamá, ojala pudieses verme en esta aventura.", "Te extraño mamá, ojala pudieses verme en esta aventura.", "Te extraño mamá, ojala pudieses verme en esta aventura.", "Te extraño mamá, ojala pudieses verme en esta aventura."]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_px735"]
 _data = {
 &"RESET": SubResource("Animation_rerct"),
 &"blink": SubResource("Animation_kg4ax"),
-&"fade in": SubResource("Animation_f0i4t")
+&"fade in": SubResource("Animation_f0i4t"),
+&"instructions": SubResource("Animation_px735")
 }
 
 [node name="Transition" type="CanvasLayer"]
@@ -167,5 +220,24 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_px735")
 }
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -15.0
+offset_right = 190.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+text = "Esta bien, yo creo que lo puedo lograr."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
