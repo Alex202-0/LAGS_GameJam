@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0yesy6lsvy2n"]
+
+[ext_resource type="Script" uid="uid://fp5xe8nmm4l" path="res://scripts/dialogue_box.gd" id="1_kayvi"]
+[ext_resource type="Texture2D" uid="uid://dss8ahuvj6dsn" path="res://assets/triangle.png" id="2_nrhqn"]
+
+[sub_resource type="Animation" id="Animation_gf8gl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Triangle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1008, 604)]
+}
+
+[sub_resource type="Animation" id="Animation_w0s83"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Triangle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1008, 604), Vector2(1008, 618)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bh7g6"]
+_data = {
+&"RESET": SubResource("Animation_gf8gl"),
+&"idle": SubResource("Animation_w0s83")
+}
+
+[node name="DialogueBox" type="Control"]
+visibility_layer = 512
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kayvi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.807
+anchor_right = 0.901
+anchor_bottom = 1.0
+offset_left = 0.127991
+offset_top = 0.0639648
+offset_right = 0.0479736
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.82
+anchor_right = 0.901
+anchor_bottom = 1.0
+offset_left = -10.24
+offset_top = -11.36
+offset_right = 0.0479736
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Triangle" type="Sprite2D" parent="."]
+position = Vector2(1008, 604)
+rotation = 3.14159
+scale = Vector2(2.1151, 1.9504)
+texture = ExtResource("2_nrhqn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Triangle"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_bh7g6")
+}
+autoplay = "idle"

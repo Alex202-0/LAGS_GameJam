@@ -13,7 +13,15 @@ func _on_new_game_selected() -> void:
 	transition.start_blink()
 
 func _on_transition_blink_finished():
-	print("Transition finished. Loading Area1.")
+	print("Transition finished. Playing instructions.")
+	var transition = TransitionScene.instantiate()
+	add_child(transition)
+	var connected =  transition.finished_instructions.connect(Callable(self, "_on_transition_instructions_finished"))
+	
+	transition.start_instructions()
+	
+func _on_transition_instructions_finished():
+	print("Transition finished. Loading level 1.")
 	get_tree().change_scene_to_file("res://scenes/Areas/Area1.tscn")
 
 
