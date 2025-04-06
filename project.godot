@@ -15,6 +15,11 @@ run/main_scene="uid://0k4pa60xprx6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=1
+window/stretch/mode="canvas_items"
+
 [input]
 
 jump={
