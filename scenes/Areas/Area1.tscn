@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://0k4pa60xprx6"]
+[gd_scene load_steps=16 format=3 uid="uid://0k4pa60xprx6"]
 
+[ext_resource type="Script" uid="uid://cmk3gexfioso1" path="res://scripts/area_1.gd" id="1_a64mu"]
 [ext_resource type="Texture2D" uid="uid://by2pa7e3kqa51" path="res://assets/Dungeon Tile Set.png" id="1_eg5as"]
 [ext_resource type="PackedScene" uid="uid://6ik52udqvlu3" path="res://scenes/Player.tscn" id="2_04kkk"]
-
 [ext_resource type="PackedScene" uid="uid://qpgw7uelou4o" path="res://scenes/enemy.tscn" id="3_8s6j4"]
-[ext_resource type="Script" path="res://scripts/memory_controller.gd" id="3_nonc7"]
-[ext_resource type="Script" path="res://scripts/visual_filter.gd" id="4_nnl1e"]
-[ext_resource type="Shader" path="res://scenes/Areas/overlay_memory_shader.gdshader" id="4_pb4ok"]
-
+[ext_resource type="Script" uid="uid://cyavl2wx80g02" path="res://scripts/memory_controller.gd" id="3_nonc7"]
+[ext_resource type="Script" uid="uid://cro20ice80e06" path="res://scripts/visual_filter.gd" id="4_nnl1e"]
+[ext_resource type="Shader" uid="uid://dqr2bo20fumby" path="res://scenes/Areas/overlay_memory_shader.gdshader" id="4_pb4ok"]
+[ext_resource type="PackedScene" uid="uid://t2h856l3witk" path="res://scenes/transition.tscn" id="8_gumpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04kkk"]
 texture = ExtResource("1_eg5as")
@@ -305,6 +305,9 @@ shader_parameter/darken = 0.2
 shader_parameter/strength = 1.0
 
 [node name="Area1" type="Node2D"]
+script = ExtResource("1_a64mu")
+
+[node name="Transition" parent="." instance=ExtResource("8_gumpc")]
 
 [node name="RealWorld" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nonc7")
@@ -315,7 +318,6 @@ layer_0/tile_data = PackedInt32Array(1, 196610, 2, 2, 131074, 2, 3, 65538, 2, 4,
 
 [node name="Ground Enemy" parent="." instance=ExtResource("3_8s6j4")]
 position = Vector2(360, -16)
-
 
 [node name="MemoryController" type="Node" parent="."]
 script = ExtResource("3_nonc7")

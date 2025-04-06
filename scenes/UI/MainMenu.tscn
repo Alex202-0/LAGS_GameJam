@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://duni7uwhmtvi6"]
+
+[ext_resource type="Script" uid="uid://bmer4uwm7jo4q" path="res://scripts/main_menu.gd" id="1_3h7gc"]
+[ext_resource type="PackedScene" uid="uid://kyd7gfai5r15" path="res://scenes/UI/MenuItem.tscn" id="2_4vh8y"]
+[ext_resource type="Texture2D" uid="uid://j83u7i3j3pmh" path="res://assets/sky.png" id="2_b1p1q"]
+[ext_resource type="Script" uid="uid://guctbb5aqkgx" path="res://scripts/parallax_background.gd" id="2_kgeya"]
+[ext_resource type="Texture2D" uid="uid://c1kq50dolniur" path="res://assets/rocks_1.png" id="3_s7yn2"]
+[ext_resource type="Texture2D" uid="uid://cp5pduqy8t2k7" path="res://assets/pines.png" id="4_5r3px"]
+[ext_resource type="Texture2D" uid="uid://b8n20sp8qv2w8" path="res://assets/clouds_1.png" id="6_qa57o"]
+[ext_resource type="Texture2D" uid="uid://1x4ajqyvnaha" path="res://assets/clouds_2.png" id="7_6lq7x"]
+[ext_resource type="PackedScene" uid="uid://1sqtn7ql445i" path="res://scenes/option_menu.tscn" id="9_qa57o"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3h7gc")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_kgeya")
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="SkyImage" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+position = Vector2(557.5, 325)
+texture = ExtResource("2_b1p1q")
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="MountainLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(210, 117)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="MountainImage" type="Sprite2D" parent="ParallaxBackground/MountainLayer"]
+position = Vector2(497, 210)
+scale = Vector2(0.765625, 0.609259)
+texture = ExtResource("3_s7yn2")
+
+[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(210, 117)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="ForegroundImage" type="Sprite2D" parent="ParallaxBackground/ForegroundLayer"]
+position = Vector2(579, 209.5)
+scale = Vector2(0.811458, 0.606481)
+texture = ExtResource("4_5r3px")
+
+[node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="CloudImage" type="Sprite2D" parent="ParallaxBackground/CloudLayer"]
+position = Vector2(771, 329.75)
+scale = Vector2(0.795833, 0.608796)
+texture = ExtResource("6_qa57o")
+
+[node name="CloudImage2" type="Sprite2D" parent="ParallaxBackground/CloudLayer"]
+position = Vector2(698.5, 323)
+scale = Vector2(0.728646, 0.592593)
+texture = ExtResource("7_6lq7x")
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -17.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+
+[node name="New Game" parent="MenuContainer" instance=ExtResource("2_4vh8y")]
+layout_mode = 2
+label_text = "New Game"
+
+[node name="Continue" parent="MenuContainer" instance=ExtResource("2_4vh8y")]
+layout_mode = 2
+label_text = "Continue"
+
+[node name="Options" parent="MenuContainer" instance=ExtResource("2_4vh8y")]
+layout_mode = 2
+label_text = "Options"
+
+[node name="Quit" parent="MenuContainer" instance=ExtResource("2_4vh8y")]
+layout_mode = 2
+label_text = "Exit"
+
+[node name="OptionMenu" parent="." instance=ExtResource("9_qa57o")]
+visible = false
+layout_mode = 1
+
+[connection signal="selected" from="MenuContainer/New Game" to="." method="_on_new_game_selected"]
+[connection signal="selected" from="MenuContainer/Continue" to="." method="_on_continue_selected"]
+[connection signal="selected" from="MenuContainer/Options" to="." method="_on_options_selected"]
+[connection signal="selected" from="MenuContainer/Quit" to="." method="_on_quit_selected"]

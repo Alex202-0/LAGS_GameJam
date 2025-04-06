@@ -78,4 +78,3 @@ func _update_sprite_direction():
 func _play_anim(anim_name: String):
 	if sprite.animation != anim_name or !sprite.is_playing():
 		sprite.play(anim_name)
-
