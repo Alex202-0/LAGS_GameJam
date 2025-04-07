@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgqsqhp876d3s"
-path="res://.godot/imported/Yellow-Tree.png-f985cce48a5aa153ec453daa95b4fb3a.ctex"
+path="res://.godot/imported/Yellow-Tree.png-2245077b898ad8aa017fa8c2087c2569.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Legacy-Fantasy - High Forest 2.3/Trees/Yellow-Tree.png"
-dest_files=["res://.godot/imported/Yellow-Tree.png-f985cce48a5aa153ec453daa95b4fb3a.ctex"]
+source_file="res://Trees/Yellow-Tree.png"
+dest_files=["res://.godot/imported/Yellow-Tree.png-2245077b898ad8aa017fa8c2087c2569.ctex"]
 
 [params]
 

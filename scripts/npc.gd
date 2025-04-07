@@ -29,5 +29,5 @@ func _input(event):
 		$Label.visible = false
 		active_dialogue_box = DIALOG.instantiate()
 		get_tree().get_root().add_child(active_dialogue_box)
-		var player = get_node("/root/Area1/Player") # Adjust to your actual path
+		var player = get_node("/root/Node2D/Player") # Adjust to your actual path
 		player.can_move = false

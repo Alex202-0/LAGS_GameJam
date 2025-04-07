@@ -3,7 +3,10 @@ var dialog = [
 	"Hola explorador!",
 	"Cuidado con el terreno, hubo un derrumbe.",
 	"Y evita los animales, se ven que tienen hambre.",
-	"Diviertete!"
+	"Diviertete!",
+	"Also, el juego le faltaron par de features.",
+	"Presiona la F al lado de un monstruo para 'cerrar tus ojos'",
+	"Sorry! ~Alex"
 ]
 
 var dialog_index = -1
@@ -35,7 +38,7 @@ func load_dialog():
 	
 
 func _on_dialogue_finished():
-	var player = get_node("/root/Area1/Player")
+	var player = get_node("/root/Node2D/Player")
 	if dialog_index >= dialog.size():
 		player.can_move = true
 	finished = true

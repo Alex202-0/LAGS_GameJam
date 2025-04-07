@@ -62,6 +62,8 @@ func _on_hitbox_body_entered(body):
 	if body.name == "Player":
 		state = State.HIT
 		print("💥 Enemy hit the player!")
+		if body.has_method("die"):
+			body.die()
 
 func _on_player_detected(body):
 	if body.name == "Player" and state != State.HIT:

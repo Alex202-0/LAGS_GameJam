@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duni7uwhmtvi6"]
+[gd_scene load_steps=11 format=3 uid="uid://duni7uwhmtvi6"]
 
 [ext_resource type="Script" uid="uid://bmer4uwm7jo4q" path="res://scripts/main_menu.gd" id="1_3h7gc"]
 [ext_resource type="PackedScene" uid="uid://kyd7gfai5r15" path="res://scenes/UI/MenuItem.tscn" id="2_4vh8y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8n20sp8qv2w8" path="res://assets/clouds_1.png" id="6_qa57o"]
 [ext_resource type="Texture2D" uid="uid://1x4ajqyvnaha" path="res://assets/clouds_2.png" id="7_6lq7x"]
 [ext_resource type="PackedScene" uid="uid://1sqtn7ql445i" path="res://scenes/option_menu.tscn" id="9_qa57o"]
+[ext_resource type="Texture2D" uid="uid://dfv41imspyq10" path="res://assets/corazon a ciegas.png" id="10_6lq7x"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -95,6 +96,15 @@ label_text = "Exit"
 [node name="OptionMenu" parent="." instance=ExtResource("9_qa57o")]
 visible = false
 layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 32.0
+offset_right = 983.0
+offset_bottom = 544.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_6lq7x")
 
 [connection signal="selected" from="MenuContainer/New Game" to="." method="_on_new_game_selected"]
 [connection signal="selected" from="MenuContainer/Continue" to="." method="_on_continue_selected"]

@@ -22,7 +22,7 @@ func _on_transition_blink_finished():
 	
 func _on_transition_instructions_finished():
 	print("Transition finished. Loading level 1.")
-	get_tree().change_scene_to_file("res://scenes/Areas/Area1.tscn")
+	get_tree().change_scene_to_file("res://scenes/Areas/Beginning_Area.tscn")
 
 
 func _on_continue_selected() -> void:
